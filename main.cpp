@@ -153,11 +153,11 @@ int main()
 
             }
             else {
-                throw (s); // NOLINT(hicpp-exception-baseclass)
+                throw std::exception();
             }
 
         }
-        catch(int s){
+        catch(std::exception &s){
             std::cout<<"Imobilul nu are pretul < 60000\n";
         }
         std::cout<<"\n";
