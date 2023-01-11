@@ -18,15 +18,15 @@ public:
     Penthouse(char loc[], int, int, int, int);
 
     // constructor de copiere
-    Penthouse(const Penthouse &P);
+    [[maybe_unused]] Penthouse(const Penthouse &P);
 
     // operator '='
     Penthouse& operator=(const Penthouse &P);
 
-    int getPret()const override;
+    [[nodiscard]] int getPret()const override;
     void afisare()const override;
 
-    int getDimensiune_Terasa()const override;
+    [[nodiscard]] int getDimensiune_Terasa()const override;
 };
 
 

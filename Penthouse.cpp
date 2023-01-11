@@ -18,7 +18,7 @@ Penthouse::Penthouse(char z[20], int nr, int mp, int pr, int dim_t):Apartament(z
 }
 
 //constructor de copiere
-Penthouse::Penthouse(const Penthouse &C): Apartament(C){
+[[maybe_unused]] Penthouse::Penthouse(const Penthouse &C): Apartament(C){
     dimensiune_terasa = C.dimensiune_terasa;
 }
 

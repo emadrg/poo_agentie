@@ -20,7 +20,7 @@ Casa_la_tara::Casa_la_tara(char loc[20], int nr, int mp, int pr, int dim ):Casa(
 }
 
 //constructor de copiere
-Casa_la_tara::Casa_la_tara(const Casa_la_tara &C): Casa(C){
+[[maybe_unused]] Casa_la_tara::Casa_la_tara(const Casa_la_tara &C): Casa(C){
     dimensiune_gradina = C.dimensiune_gradina;
 }
 
@@ -46,7 +46,7 @@ void Casa_la_tara::afisare()const{
 }
 
 //getDimensiuneGradina
-int Casa_la_tara::getDimensiune_Gradina()const{
+[[maybe_unused]] int Casa_la_tara::getDimensiune_Gradina()const{
     return dimensiune_gradina;
 }
 

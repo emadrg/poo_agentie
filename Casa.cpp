@@ -52,9 +52,9 @@ int Casa::getPret()const{
 }
 
 //afisare
-void Casa::afisare()const{
-    std::cout<<"Localitate: "<< localitate<<"\n";
-    std::cout<<"Numar camere: "<<numar_camere<<"\n";
-    std::cout<<"Dimensiune: "<<metri_patrati<<"\n";
-    std::cout<<"Pret: "<<pret<<"\n";
-}
+//void Casa::afisare()const{
+//    std::cout<<"Localitate: "<< localitate<<"\n";
+//    std::cout<<"Numar camere: "<<numar_camere<<"\n";
+//    std::cout<<"Dimensiune: "<<metri_patrati<<"\n";
+//    std::cout<<"Pret: "<<pret<<"\n";
+//}

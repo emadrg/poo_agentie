@@ -134,7 +134,7 @@ int main()
     }
     std::cout<<pret_total<<'\n';
 
-    for(int i=0; i<vec.size(); i++){
+    for(unsigned long long i=0; i<vec.size(); i++){
         if(vec[i]->getDimensiune_Terasa() != -1)
         {
             std::cout<<"Proprietatea numarul "<<i+1<<" este un penthouse ce are dimensiunea terasei "<<vec[i]->getDimensiune_Terasa();

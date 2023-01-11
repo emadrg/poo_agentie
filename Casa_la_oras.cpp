@@ -1,4 +1,4 @@
-#include<iostream>
+
 #include"Casa_la_oras.h"
 #include "Casa.h"
 
@@ -18,7 +18,7 @@ Casa_la_oras::Casa_la_oras(char loc[20], int nr, int mp, int pr, int dist ):Casa
 }
 
 //constructor de copiere
-Casa_la_oras::Casa_la_oras(const Casa_la_oras &C): Casa(C){
+[[maybe_unused]] Casa_la_oras::Casa_la_oras(const Casa_la_oras &C): Casa(C){
     distanta_centru = C.distanta_centru;
 }
 
@@ -35,16 +35,20 @@ int Casa_la_oras::getPret()const{
 }
 
 //afisare
-void Casa_la_oras::afisare()const{
-    std::cout<<"Localitate: "<< localitate<<"\n";
-    std::cout<<"Numar camere: "<<numar_camere<<"\n";
-    std::cout<<"Dimensiune: "<<metri_patrati;
-    std::cout<<"Distanta centru: "<<distanta_centru<<"\n";
-    std::cout<<"Pret: "<<pret<<"\n";
-}
+//void Casa_la_oras::afisare()const{
+//    std::cout<<"Localitate: "<< localitate<<"\n";
+//    std::cout<<"Numar camere: "<<numar_camere<<"\n";
+//    std::cout<<"Dimensiune: "<<metri_patrati;
+//    std::cout<<"Distanta centru: "<<distanta_centru<<"\n";
+//    std::cout<<"Pret: "<<pret<<"\n";
+//}
 
 //getDimensiuneGradina
-int Casa_la_oras::getDistanta_centru()const{
+[[maybe_unused]] int Casa_la_oras::getDistanta_centru()const{
     return distanta_centru;
+}
+
+void Casa_la_oras::afisare() const {
+
 }
 

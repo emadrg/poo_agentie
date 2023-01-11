@@ -12,7 +12,7 @@
 
 class Apartament: virtual public Interfata{
 protected:
-    char zona[20];
+    char zona[20]{};
     int numar_camere;
     int metri_patrati;
     int pret;
@@ -30,9 +30,9 @@ public:
     // operator '='
     Apartament& operator=(const Apartament &A);
 
-    int getPret()const override;
-    int getDimensiune_Terasa()const override {return -1;}
-    void afisare()const;
+    [[nodiscard]] int getPret()const;
+    [[nodiscard]] int getDimensiune_Terasa()const {return -1;}
+    void afisare()const ;
 
 
 

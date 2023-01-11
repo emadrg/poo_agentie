@@ -17,14 +17,14 @@ public:
     Casa_la_tara();
     Casa_la_tara(char loc[], int , int , int, int );
 
-    Casa_la_tara(const Casa_la_tara &C);
+    [[maybe_unused]] Casa_la_tara(const Casa_la_tara &C);
     Casa_la_tara& operator=(const Casa_la_tara &C);
 
-    int getPret()const override;
+    [[nodiscard]] int getPret()const override;
     void afisare()const override;
 
-    int getDimensiune_Gradina()const;
-    int getDimensiune_Terasa()const override {return -1;}
+    [[maybe_unused]] [[nodiscard]] int getDimensiune_Gradina()const;
+    [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
 };
 
 

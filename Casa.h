@@ -23,9 +23,9 @@ public:
     // operator '='
     Casa& operator=(const Casa &C);
 
-    int getPret()const override;
+    [[nodiscard]] int getPret()const override;
    // int getDimensiune_Terasa()const {return -1;}
-    void afisare()const override;
+    //void afisare()const override;
 
 
 };

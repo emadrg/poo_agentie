@@ -17,14 +17,14 @@ public:
     Casa_la_oras();
     Casa_la_oras(char loc[], int , int , int, int );
 
-    Casa_la_oras(const Casa_la_oras &C);
+    [[maybe_unused]] Casa_la_oras(const Casa_la_oras &C);
     Casa_la_oras& operator=(const Casa_la_oras &C);
 
-    int getPret()const;
+    [[nodiscard]] int getPret()const;
     void afisare()const;
 
-    int getDistanta_centru()const;
-    int getDimensiune_Terasa()const {return -1;}
+    [[maybe_unused]] [[nodiscard]] int getDistanta_centru()const;
+    [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
 };
 
 

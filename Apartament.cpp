@@ -1,10 +1,10 @@
 #include<iostream>
-#include<string.h>
+#include<cstring>
 #include"Apartament.h"
 
 //constructor fara parametri
 Apartament::Apartament(){
-    for(int i = 0; i<20; i++) zona[i] = '0';
+    for(char & i : zona) i = '0';
     numar_camere = 0;
     metri_patrati = 0;
     pret = 0;
