@@ -152,9 +152,7 @@ int main()
                 i->afisare();
 
             }
-            else{
-                throw(s);
-            }
+
         }
         catch(int s){
             std::cout<<"Imobilul nu are pretul < 60000\n";
