@@ -152,6 +152,9 @@ int main()
                 i->afisare();
 
             }
+            else {
+                throw (s); // NOLINT(hicpp-exception-baseclass)
+            }
 
         }
         catch(int s){
