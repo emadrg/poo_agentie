@@ -1,6 +1,6 @@
 
 #include"Casa_la_oras.h"
-#include "Casa.h"
+//#include "Casa.h"
 
 
 //constructor fara parametri

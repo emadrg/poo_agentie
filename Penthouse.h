@@ -26,7 +26,7 @@ public:
     [[nodiscard]] int getPret()const override;
     void afisare()const override;
 
-    [[nodiscard]] int getDimensiune_Terasa()const override;
+    //[[nodiscard]] int getDimensiune_Terasa()const override;
 };
 
 

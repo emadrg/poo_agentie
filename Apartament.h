@@ -30,9 +30,9 @@ public:
     // operator '='
     Apartament& operator=(const Apartament &A);
 
-    [[nodiscard]] int getPret()const;
-    [[nodiscard]] int getDimensiune_Terasa()const {return -1;}
-    void afisare()const ;
+    [[nodiscard]] int getPret()const override;
+    [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
+    void afisare()const override;
 
 
 

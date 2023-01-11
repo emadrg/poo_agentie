@@ -3,7 +3,6 @@
 //
 
 #include "Casa.h"
-#include<iostream>
 #include<cstring>
 
 //constructor fara parametri

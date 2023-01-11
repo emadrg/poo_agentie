@@ -45,8 +45,6 @@ void Penthouse::afisare()const{
 
 //get dimensiune_terasa
 
-int Penthouse::getDimensiune_Terasa()const{
-    return dimensiune_terasa;
-
-
-}
+//int Penthouse::getDimensiune_Terasa()const{
+//    return dimensiune_terasa;
+//}

@@ -20,11 +20,11 @@ public:
     [[maybe_unused]] Casa_la_oras(const Casa_la_oras &C);
     Casa_la_oras& operator=(const Casa_la_oras &C);
 
-    [[nodiscard]] int getPret()const;
-    void afisare()const;
+    [[nodiscard]] int getPret()const override;
+    void afisare()const override;
 
     [[maybe_unused]] [[nodiscard]] int getDistanta_centru()const;
-    [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
+    [[nodiscard]] int getDimensiune_Terasa()const override{return -1;}
 };
 
 
