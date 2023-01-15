@@ -8,10 +8,8 @@
 void Agentie::citire() {
     std::string loc,z;
     int nr,mp,pr,dim_g,dist_c,dim_t;
-    if(nrLocuinte==0) {
         std::cout << "Introduceti numarul de imobiliare: ";
         std::cin >> nrLocuinte;
-    }
 
     for(int i=0; i<nrLocuinte; i++)
     {

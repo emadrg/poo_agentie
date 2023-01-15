@@ -161,10 +161,8 @@ int main()
 //        std::cout<<"\n";
 //
 //    }
-    Agentie agentia_mea, agentia_doi;
+    Agentie agentia_mea;
     agentia_mea.citire();
-    agentia_doi.citire();
-    agentia_mea = agentia_doi;
     agentia_mea.afisare();
     return 0;
 }
