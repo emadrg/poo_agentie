@@ -4,16 +4,17 @@
 
 #include "Penthouse.h"
 #include<iostream>
+#include <utility>
 
-Penthouse::Penthouse(){
-    for(char & i : zona) i = '0';
+Penthouse::Penthouse():Apartament(){
+    zona.assign("");
     numar_camere = 0;
     metri_patrati = 0;
     pret = 0;
     dimensiune_terasa = 0;
 }
 
-Penthouse::Penthouse(char z[20], int nr, int mp, int pr, int dim_t):Apartament(z, nr, mp, pr){
+Penthouse::Penthouse(std::string z, int nr, int mp, int pr, int dim_t):Apartament(std::move(z), nr, mp, pr){
     dimensiune_terasa = dim_t;
 }
 
@@ -35,14 +36,15 @@ int Penthouse::getPret()const{
 }
 
 //afisare
-void Penthouse::afisare()const{
-    std::cout<<"Zona: "<< zona<<"\n";
-    std::cout<<"Numar camere: "<<numar_camere<<"\n";
-    std::cout<<"Dimensiune: "<<metri_patrati<<"\n";
-    std::cout<<"Dimensiune terasa: "<<dimensiune_terasa<<"\n";
-    std::cout<<"Pret: "<<pret<<"\n";
+std::ostream &operator<<(std::ostream &out, Penthouse &penthouse){
+    out<<"Zona: "<< penthouse.zona<<"\n";
+    out<<"Numar camere: "<<penthouse.numar_camere<<"\n";
+    out<<"Dimensiune: "<<penthouse.metri_patrati<<"\n";
+    out<<"Dimensiune terasa: "<<penthouse.dimensiune_terasa<<"\n";
+    out<<"Pret: "<<penthouse.pret<<"\n";
+    return out;
 }
-
+void Penthouse::afisare(){ std::cout << *this;}
 //get dimensiune_terasa
 
 //int Penthouse::getDimensiune_Terasa()const{

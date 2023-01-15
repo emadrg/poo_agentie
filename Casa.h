@@ -1,10 +1,11 @@
 #pragma once
 #include<iostream>
-#include"Interfata.h"
+#include<cstring>
+#include"Locuinte.h"
 
-class Casa: public  Interfata{
+class Casa: public  Locuinte{
 protected:
-    char localitate[20]{};
+    std::string localitate{};
     int numar_camere;
     int metri_patrati;
     int pret;
@@ -14,18 +15,17 @@ public:
     Casa();
 
     // constructor cu parametri
-    Casa(char loc[], int , int , int );
-
+    Casa(const std::string&, int , int , int );
 
     // constructor de copiere
     Casa(const Casa &C);
 
     // operator '='
     Casa& operator=(const Casa &C);
-
+    // operator <<
+    friend std::ostream &operator<<(std::ostream &out, const Casa &casa);
+    void afisare()override;
     [[nodiscard]] int getPret()const override;
-   // int getDimensiune_Terasa()const {return -1;}
-    //void afisare()const override;
-
+    // int getDimensiune_Terasa()const {return -1;}
 
 };

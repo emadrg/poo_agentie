@@ -15,7 +15,7 @@ protected:
 
 public:
     Penthouse();
-    Penthouse(char loc[], int, int, int, int);
+    Penthouse(std::string , int, int, int, int);
 
     // constructor de copiere
     [[maybe_unused]] Penthouse(const Penthouse &P);
@@ -24,8 +24,9 @@ public:
     Penthouse& operator=(const Penthouse &P);
 
     [[nodiscard]] int getPret()const override;
-    void afisare()const override;
-
+    // afisare
+    friend std::ostream &operator<<(std::ostream &out, Penthouse &penthouse);
+    void afisare()override;
     //[[nodiscard]] int getDimensiune_Terasa()const override;
 };
 

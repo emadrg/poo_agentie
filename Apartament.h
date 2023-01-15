@@ -7,12 +7,12 @@
 
 #include<cstring>
 #include<iostream>
-#include"Interfata.h"
+#include"Locuinte.h"
 
 
-class Apartament: virtual public Interfata{
+class Apartament: virtual public Locuinte{
 protected:
-    char zona[20]{};
+    std::string zona{};
     int numar_camere;
     int metri_patrati;
     int pret;
@@ -22,7 +22,7 @@ public:
     Apartament();
 
     // constructor cu parametri
-    Apartament(char loc[], int , int , int );
+    Apartament(std::string, int , int , int );
 
     // constructor de copiere
     Apartament(const Apartament &A);
@@ -32,10 +32,10 @@ public:
 
     [[nodiscard]] int getPret()const override;
     [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
-    void afisare()const override;
 
-
-
+    // afisare
+    friend std::ostream &operator<<(std::ostream &out, Apartament &apartament);
+    void afisare()override;
 };
 
 #endif //POO_AGENTIE_APARTAMENT_H

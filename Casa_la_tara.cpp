@@ -3,19 +3,17 @@
 //
 
 #include<iostream>
+#include <utility>
 #include"Casa_la_tara.h"
+#include "Casa.h"
 
 //constructor fara parametri
-Casa_la_tara::Casa_la_tara(){
-    for(char & i : localitate) i = '0';
-    numar_camere = 0;
-    metri_patrati = 0;
-    pret = 0;
+Casa_la_tara::Casa_la_tara():Casa(){
     dimensiune_gradina = 0;
 }
 
 //constructor cu parametri
-Casa_la_tara::Casa_la_tara(char loc[20], int nr, int mp, int pr, int dim ):Casa(loc,  nr, mp,  pr){
+Casa_la_tara::Casa_la_tara(std::string loc, int nr, int mp, int pr, int dim ):Casa(std::move(loc),  nr, mp,  pr){
     dimensiune_gradina = dim;
 }
 
@@ -37,25 +35,16 @@ int Casa_la_tara::getPret()const{
 }
 
 //afisare
-void Casa_la_tara::afisare()const{
-    std::cout<<"Localitate: "<< localitate<<"\n";
-    std::cout<<"Numar camere: "<<numar_camere<<"\n";
-    std::cout<<"Dimensiune: "<<metri_patrati<<"\n";
-    std::cout<<"Dimensiune gradina: "<<dimensiune_gradina<<"\n";
-    std::cout<<"Pret: "<<pret<<"\n";
+//overload pe << pentru afisare
+std::ostream &operator<<(std::ostream &out, Casa_la_tara &casa){
+    out<<dynamic_cast<Casa&>(casa);
+    out<<casa.dimensiune_gradina<<"\n";
+    return out;
 }
+
+void Casa_la_tara::afisare(){ std::cout << *this;}
 
 //getDimensiuneGradina
 [[maybe_unused]] int Casa_la_tara::getDimensiune_Gradina()const{
     return dimensiune_gradina;
 }
-
-
-
-
-
-
-
-
-
-

@@ -15,16 +15,19 @@ protected:
 
 public:
     Casa_la_tara();
-    Casa_la_tara(char loc[], int , int , int, int );
+    Casa_la_tara(std::string, int , int , int, int );
 
     [[maybe_unused]] Casa_la_tara(const Casa_la_tara &C);
     Casa_la_tara& operator=(const Casa_la_tara &C);
 
     [[nodiscard]] int getPret()const override;
-    void afisare()const override;
 
     [[maybe_unused]] [[nodiscard]] int getDimensiune_Gradina()const;
     [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
+
+    // afisare
+    friend std::ostream &operator<<(std::ostream &out, Casa_la_tara &casa);
+    void afisare()override;
 };
 
 

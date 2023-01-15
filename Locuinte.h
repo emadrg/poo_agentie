@@ -7,11 +7,11 @@
 
 
 #include <iostream>
-class Interfata{
+class Locuinte{
 public:
     [[nodiscard]] virtual int getPret()const = 0;
-    virtual void afisare()const = 0;
-    virtual ~Interfata() = 0;
+    virtual void afisare() = 0;
+    virtual ~Locuinte() = 0;
     [[nodiscard]] virtual int getDimensiune_Terasa()const = 0;
 };
 

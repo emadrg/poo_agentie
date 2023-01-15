@@ -1,18 +1,17 @@
 
-#include<cstring>
 #include"Apartament.h"
 
 //constructor fara parametri
 Apartament::Apartament(){
-    for(char & i : zona) i = '0';
+    zona.assign("");
     numar_camere = 0;
     metri_patrati = 0;
     pret = 0;
 }
 
 //constructor cu parametri
-Apartament::Apartament(char z[20], int nr, int mp, int pr){
-    strcpy(zona, z);
+Apartament::Apartament(std::string zona, int nr, int mp, int pr){
+    zona.assign(zona);
     numar_camere = nr;
     metri_patrati = mp;
     pret = pr;
@@ -20,7 +19,7 @@ Apartament::Apartament(char z[20], int nr, int mp, int pr){
 
 //constructor de copiere
 Apartament::Apartament(const Apartament &A){
-    strcpy(zona, A.zona);
+    zona.assign(A.zona);
     numar_camere = A.numar_camere;
     metri_patrati = A.metri_patrati;
     pret = A.pret;
@@ -33,7 +32,7 @@ Apartament& Apartament::operator=(const Apartament& A){
         metri_patrati = 0;
         pret = 0;
     }
-    strcpy(zona, A.zona);
+    zona.assign(A.zona);
     numar_camere = A.numar_camere;
     metri_patrati = A.metri_patrati;
     pret = A.pret;
@@ -47,9 +46,13 @@ int Apartament::getPret()const{
 }
 
 //afisare
-void Apartament::afisare()const{
-    std::cout<<"Zona: "<< zona<<"\n";
-    std::cout<<"Numar camere: "<<numar_camere<<"\n";
-    std::cout<<"Dimensiune: "<<metri_patrati<<"\n";
-    std::cout<<"Pret: "<<pret<<"\n";
+// afisare
+std::ostream &operator<<(std::ostream &out, Apartament &apartament){
+    out<<"Zona: "<< apartament.zona<<"\n";
+    out<<"Numar camere: "<<apartament.numar_camere<<"\n";
+    out<<"Dimensiune: "<<apartament.metri_patrati<<"\n";
+    out<<"Pret: "<<apartament.pret<<"\n";
+    return out;
 }
+
+void Apartament::afisare(){ std::cout << *this;}
