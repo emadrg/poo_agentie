@@ -156,7 +156,7 @@ void Agentie::afisare() {
             }
 
         }
-        catch(std::exception *s){
+        catch(std::exception &s){
             std::cout<<"Imobilul nu are pretul < 60000\n";
         }
         std::cout<<"\n";
