@@ -22,7 +22,7 @@ public:
 
     [[nodiscard]] int getPret()const override;
 
-    [[maybe_unused]] [[nodiscard]] int getDistanta_centru()const;
+    //[[maybe_unused]] [[nodiscard]] int getDistanta_centru()const;
     [[nodiscard]] int getDimensiune_Terasa()const override{return -1;}
 
     // afisare

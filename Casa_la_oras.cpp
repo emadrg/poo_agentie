@@ -33,9 +33,9 @@ int Casa_la_oras::getPret()const{
 }
 
 //getDimensiuneGradina
-[[maybe_unused]] int Casa_la_oras::getDistanta_centru()const{
-    return distanta_centru;
-}
+//[[maybe_unused]] int Casa_la_oras::getDistanta_centru()const{
+//    return distanta_centru;
+//}
 //overload pe << pentru afisare
 std::ostream &operator<<(std::ostream &out, Casa_la_oras &casa){
     // dynamic_cast la clasa de baza pentru afisare

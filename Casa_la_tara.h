@@ -22,7 +22,7 @@ public:
 
     [[nodiscard]] int getPret()const override;
 
-    [[maybe_unused]] [[nodiscard]] int getDimensiune_Gradina()const;
+   // [[maybe_unused]] [[nodiscard]] int getDimensiune_Gradina()const;
     [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
 
     // afisare

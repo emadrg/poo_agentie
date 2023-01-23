@@ -45,6 +45,6 @@ std::ostream &operator<<(std::ostream &out, Casa_la_tara &casa){
 void Casa_la_tara::afisare(){ std::cout << *this;}
 
 //getDimensiuneGradina
-[[maybe_unused]] int Casa_la_tara::getDimensiune_Gradina()const{
-    return dimensiune_gradina;
-}
+//[[maybe_unused]] int Casa_la_tara::getDimensiune_Gradina()const{
+//    return dimensiune_gradina;
+//}
