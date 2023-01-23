@@ -8,8 +8,8 @@
 void Agentie::citire() {
     std::string loc,z;
     int nr,mp,pr,dim_g,dist_c,dim_t;
-        std::cout << "Introduceti numarul de imobiliare: ";
-        std::cin >> nrLocuinte;
+    std::cout << "Introduceti numarul de imobiliare: ";
+    std::cin >> nrLocuinte;
 
     for(int i=0; i<nrLocuinte; i++)
     {
@@ -115,7 +115,7 @@ void Agentie::citire() {
 [[maybe_unused]] Agentie::Agentie (const Agentie& other)
 {
     for(unsigned long long i=0; i<size(locuinte); i++)
-    locuinte[i]= other.locuinte[i];
+        locuinte[i]= other.locuinte[i];
     nrLocuinte=other.nrLocuinte;
 }
 
