@@ -7,35 +7,30 @@
 
 #include<cstring>
 #include<iostream>
-#include"Locuinte.h"
+#include <memory>
+#include"Locuinta.h"
 
 
-class Apartament: virtual public Locuinte{
+class Apartament: virtual public Locuinta{
 protected:
     std::string zona{};
-    int numar_camere;
-    int metri_patrati;
-    int pret;
+
+    const int taxa_inregistrare = 1000;
 
 public:
     // constructor fara parametri
     Apartament();
 
     // constructor cu parametri
-    Apartament(std::string, int , int , int );
+    Apartament(std::string, int , int );
 
-    // constructor de copiere
-    Apartament(const Apartament &A);
+    int getPret() const override;
 
-    // operator '='
-    Apartament& operator=(const Apartament &A);
+    std::string toString() override;
 
-    [[nodiscard]] int getPret()const override;
-    [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
-
-    // afisare
-    friend std::ostream &operator<<(std::ostream &out, Apartament &apartament);
-    void afisare()override;
+    std::shared_ptr<Locuinta> clone() const override {
+        return std::make_shared<Apartament>(*this);
+    }
 };
 
 #endif //POO_AGENTIE_APARTAMENT_H

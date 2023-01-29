@@ -3,50 +3,31 @@
 //
 
 #include "Penthouse.h"
+#include "Agentie.h"
+#include "Exceptii.h"
 #include<iostream>
 #include <utility>
 
-Penthouse::Penthouse():Apartament(){
+Penthouse::Penthouse() : Locuinta(0, 0), Apartament() {
     zona.assign("");
     numar_camere = 0;
     metri_patrati = 0;
-    pret = 0;
     dimensiune_terasa = 0;
 }
 
-Penthouse::Penthouse(std::string z, int nr, int mp, int pr, int dim_t):Apartament(std::move(z), nr, mp, pr){
+Penthouse::Penthouse(std::string z, int nr, int mp, int dim_t) : Locuinta(nr, mp),
+                                                                 Apartament(std::move(z), nr, mp) {
+    if (nr < 0 || mp < 0 || dim_t < 0)
+        throw PenthouseException("Dimansiune negativa!");
+
     dimensiune_terasa = dim_t;
-}
-
-//constructor de copiere
-[[maybe_unused]] Penthouse::Penthouse(const Penthouse &C): Apartament(C){
-    dimensiune_terasa = C.dimensiune_terasa;
-}
-
-//operator '='
-Penthouse& Penthouse::operator=(const Penthouse &P){
-    dimensiune_terasa = P.dimensiune_terasa;
-    //(Apartament)(*this) = P;
-    return *this;
 }
 
 //getPret
 int Penthouse::getPret()const{
-    return pret;
+    return metri_patrati*Agentie::pret_mp_oras + dimensiune_terasa*Agentie::pret_mp_oras + taxa_inregistrare;
 }
 
-//afisare
-std::ostream &operator<<(std::ostream &out, Penthouse &penthouse){
-    out<<"Zona: "<< penthouse.zona<<"\n";
-    out<<"Numar camere: "<<penthouse.numar_camere<<"\n";
-    out<<"Dimensiune: "<<penthouse.metri_patrati<<"\n";
-    out<<"Dimensiune terasa: "<<penthouse.dimensiune_terasa<<"\n";
-    out<<"Pret: "<<penthouse.pret<<"\n";
-    return out;
+std::string Penthouse::toString() {
+    return Apartament::toString() + "Dimensiune terasa: " + std::to_string(dimensiune_terasa) + "\n";
 }
-void Penthouse::afisare(){ std::cout << *this;}
-//get dimensiune_terasa
-
-//int Penthouse::getDimensiune_Terasa()const{
-//    return dimensiune_terasa;
-//}

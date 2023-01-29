@@ -10,24 +10,20 @@
 #include"Apartament.h"
 
 class Penthouse: public Apartament{
-protected:
+private:
     int dimensiune_terasa;
 
 public:
     Penthouse();
-    Penthouse(std::string , int, int, int, int);
+    Penthouse(std::string, int, int, int);
 
-    // constructor de copiere
-    [[maybe_unused]] Penthouse(const Penthouse &P);
+    int getPret() const override;
 
-    // operator '='
-    Penthouse& operator=(const Penthouse &P);
+    std::string toString() override;
 
-    [[nodiscard]] int getPret()const override;
-    // afisare
-    friend std::ostream &operator<<(std::ostream &out, Penthouse &penthouse);
-    void afisare()override;
-    //[[nodiscard]] int getDimensiune_Terasa()const override;
+    std::shared_ptr<Locuinta> clone() const override {
+        return std::make_shared<Penthouse>(*this);
+    }
 };
 
 

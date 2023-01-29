@@ -5,29 +5,25 @@
 #ifndef POO_AGENTIE_CASA_LA_TARA_H
 #define POO_AGENTIE_CASA_LA_TARA_H
 
+#include <memory>
 #include"Casa.h"
 #pragma once
 
 class Casa_la_tara: public Casa{
-protected:
-
+private:
     int dimensiune_gradina;
 
 public:
     Casa_la_tara();
-    Casa_la_tara(std::string, int , int , int, int );
+    Casa_la_tara(std::string, int , int , int);
 
-    [[maybe_unused]] Casa_la_tara(const Casa_la_tara &C);
-    Casa_la_tara& operator=(const Casa_la_tara &C);
+    int getPret()const override;
 
-    [[nodiscard]] int getPret()const override;
+    std::string toString() override;
 
-   // [[maybe_unused]] [[nodiscard]] int getDimensiune_Gradina()const;
-    [[nodiscard]] int getDimensiune_Terasa()const override {return -1;}
-
-    // afisare
-    friend std::ostream &operator<<(std::ostream &out, Casa_la_tara &casa);
-    void afisare()override;
+    std::shared_ptr<Locuinta> clone() const override {
+        return std::make_shared<Casa_la_tara>(*this);
+    }
 };
 
 

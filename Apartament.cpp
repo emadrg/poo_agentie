@@ -1,58 +1,34 @@
 
-#include"Apartament.h"
+#include "Apartament.h"
+#include "Agentie.h"
+#include "Exceptii.h"
 
 //constructor fara parametri
-Apartament::Apartament(){
+Apartament::Apartament() : Locuinta(0, 0){
     zona.assign("");
     numar_camere = 0;
     metri_patrati = 0;
-    pret = 0;
 }
 
 //constructor cu parametri
-Apartament::Apartament(std::string zona, int nr, int mp, int pr){
-    zona.assign(zona);
+Apartament::Apartament(std::string _zona, int nr, int mp) : Locuinta(nr, mp) {
+    if (nr < 0 || mp < 0)
+        throw ApartamentException("Numar de mp sau camere invalid!");
+
+    zona.assign(_zona);
     numar_camere = nr;
     metri_patrati = mp;
-    pret = pr;
-}
-
-//constructor de copiere
-Apartament::Apartament(const Apartament &A){
-    zona.assign(A.zona);
-    numar_camere = A.numar_camere;
-    metri_patrati = A.metri_patrati;
-    pret = A.pret;
-}
-
-//operator '='
-Apartament& Apartament::operator=(const Apartament& A){
-    if(this!=&A){
-        numar_camere = 0;
-        metri_patrati = 0;
-        pret = 0;
-    }
-    zona.assign(A.zona);
-    numar_camere = A.numar_camere;
-    metri_patrati = A.metri_patrati;
-    pret = A.pret;
-
-    return *this;
 }
 
 //getPret
 int Apartament::getPret()const{
-    return pret;
+    return metri_patrati*Agentie::pret_mp_oras + taxa_inregistrare;
 }
 
-//afisare
-// afisare
-std::ostream &operator<<(std::ostream &out, Apartament &apartament){
-    out<<"Zona: "<< apartament.zona<<"\n";
-    out<<"Numar camere: "<<apartament.numar_camere<<"\n";
-    out<<"Dimensiune: "<<apartament.metri_patrati<<"\n";
-    out<<"Pret: "<<apartament.pret<<"\n";
-    return out;
+std::string Apartament::toString() {
+    return "Zona: " + this->zona + "\n" +
+           "Numar camere: " + std::to_string(this->numar_camere) + "\n" +
+           "Dimensiune: " + std::to_string(this->metri_patrati) + "\n" +
+           "Pret: " + std::to_string(this->getPret()) + "\n";
 }
 
-void Apartament::afisare(){ std::cout << *this;}

@@ -1,31 +1,20 @@
 #pragma once
 #include<iostream>
 #include<cstring>
-#include"Locuinte.h"
+#include"Locuinta.h"
 
-class Casa: public  Locuinte{
+class Casa: public Locuinta{
 protected:
     std::string localitate{};
-    int numar_camere;
-    int metri_patrati;
-    int pret;
+
+    const float taxa_teren = 0.15; // se adauga la pretul standard al casei o taxa de 15% si apoi se trunchiaza
 
 public:
     // constructor fara parametri
     Casa();
 
     // constructor cu parametri
-    Casa(const std::string&, int , int , int );
+    Casa(const std::string&, int , int );
 
-    // constructor de copiere
-    Casa(const Casa &C);
-
-    // operator '='
-    Casa& operator=(const Casa &C);
-    // operator <<
-    friend std::ostream &operator<<(std::ostream &out, const Casa &casa);
-    void afisare()override;
-    [[nodiscard]] int getPret()const override;
-    // int getDimensiune_Terasa()const {return -1;}
-
+    std::string toString() override;
 };

@@ -4,12 +4,22 @@
 #include "Casa_la_oras.h"
 #include "Apartament.h"
 #include "Penthouse.h"
+#include "Exceptii.h"
+#include <iostream>
 
 void Agentie::citire() {
     std::string loc,z;
-    int nr,mp,pr,dim_g,dist_c,dim_t;
+    int nr,mp,dim_g,dist_c,dim_t,nrLocuinte;
     std::cout << "Introduceti numarul de imobiliare: ";
+
     std::cin >> nrLocuinte;
+
+    if (std::cin.fail()) {
+        std::cout << "\n\nDate de tip gresit!\n\n";
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        nrLocuinte = 0;
+    }
 
     for(int i=0; i<nrLocuinte; i++)
     {
@@ -20,7 +30,22 @@ void Agentie::citire() {
         std::cout<<"-> '1' pentru 'CASA LA ORAS'"<<std::endl;
         std::cout<<"-> '2' pentru 'APARTAMENT'"<<std::endl;
         std::cout<<"-> '3' PENTRU 'PENTHOUSE':";
+
         std::cin>>tip;
+
+        if (std::cin.fail()) {
+            std::cout << "\n\nDate de tip gresit!\n\n";
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            --i;
+            continue;
+        }
+
+        if (0 > tip || tip > 3) {
+            std::cout << "Numar invalid!\n";
+            --i;
+            continue;
+        }
 
         if(tip == 0){
             std::cout<<"Localitate: ";
@@ -32,14 +57,30 @@ void Agentie::citire() {
             std::cout<<"Metri patrati: ";
             std::cin>>mp;
 
-            std::cout<<"Pret: ";
-            std::cin>>pr;
-
             std::cout<<"Dimensiune gradina: ";
             std::cin>>dim_g;
 
-            auto *C = new Casa_la_tara(loc, nr, mp, pr, dim_g);
-            locuinte.push_back(reinterpret_cast<Locuinte *>(C));
+            if (std::cin.fail()) {
+                std::cout << "\n\nDate de tip gresit!\n\n";
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                --i;
+                continue;
+            }
+
+            try {
+                auto C =  std::make_shared<Casa_la_tara>(Casa_la_tara(loc, nr, mp, dim_g));
+                locuinte.push_back(C);
+            } catch (CasaTaraException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            } catch (CasaException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            }
+
 
             std::cout<<"\n";
         }
@@ -54,14 +95,29 @@ void Agentie::citire() {
             std::cout<<"Metri patrati: ";
             std::cin>>mp;
 
-            std::cout<<"Pret: ";
-            std::cin>>pr;
-
             std::cout<<"Distanta centru: ";
             std::cin>>dist_c;
 
-            auto *C = new Casa_la_oras(loc, nr, mp, pr, dist_c);
-            locuinte.push_back(reinterpret_cast<Locuinte *>(C));
+            if (std::cin.fail()) {
+                std::cout << "\n\nDate de tip gresit!\n\n";
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                --i;
+                continue;
+            }
+
+            try {
+                auto C = std::make_shared<Casa_la_oras>(Casa_la_oras(loc, nr, mp, dist_c));
+                locuinte.push_back(C);
+            } catch (CasaOrasException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            } catch (CasaException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            }
 
             std::cout<<"\n";
         }
@@ -76,11 +132,22 @@ void Agentie::citire() {
             std::cout<<"Metri patrati: ";
             std::cin>>mp;
 
-            std::cout<<"Pret: ";
-            std::cin>>pr;
+            if (std::cin.fail()) {
+                std::cout << "\n\nDate de tip gresit!\n\n";
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                --i;
+                continue;
+            }
 
-            auto*C = new Apartament(z, nr, mp, pr);
-            locuinte.push_back(C);
+            try {
+                auto C = std::make_shared<Apartament>(z, nr, mp);
+                locuinte.push_back(C);
+            } catch (ApartamentException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            }
 
             std::cout<<"\n";
         }
@@ -95,14 +162,29 @@ void Agentie::citire() {
             std::cout<<"Metri patrati: ";
             std::cin>>mp;
 
-            std::cout<<"Pret: ";
-            std::cin>>pr;
-
             std::cout<<"Dimensiune terasa: ";
             std::cin>>dim_t;
 
-            auto *C = new Penthouse(z, nr, mp, pr, dim_t);
-            locuinte.push_back(C);
+            if (std::cin.fail()) {
+                std::cout << "\n\nDate de tip gresit!\n\n";
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                --i;
+                continue;
+            }
+
+            try {
+                auto C = std::make_shared<Penthouse>(z, nr, mp, dim_t);
+                locuinte.push_back(C);
+            } catch (PenthouseException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            } catch (ApartamentException &e) {
+                std::cout << "Eroare: " << e.what() << '\n';
+                --i;
+                continue;
+            }
 
             std::cout<<"\n";
         }
@@ -112,17 +194,11 @@ void Agentie::citire() {
     std::cout<<"\n";
 }
 
-[[maybe_unused]] Agentie::Agentie (const Agentie& other)
-{
-    for(unsigned long long i=0; i<size(locuinte); i++)
-        locuinte[i]= other.locuinte[i];
-    nrLocuinte=other.nrLocuinte;
-}
-
 void Agentie::afisare() {
-    for(auto & i : locuinte){
-        i->afisare();
-        std::cout<<"\n";
+    std::cout << "Agentia are locuintele:\n";
+
+    for(auto &i : locuinte){
+        std::cout << *i << '\n';
     }
 
     std::cout<<"\n";
@@ -134,44 +210,35 @@ void Agentie::afisare() {
     }
     std::cout<<pret_total<<'\n';
 
-    for(unsigned long long i=0; i<locuinte.size(); i++){
-        if(locuinte[i]->getDimensiune_Terasa() != -1)
-        {
-            std::cout<<"Proprietatea numarul "<<i+1<<" este un penthouse ce are dimensiunea terasei "<<locuinte[i]->getDimensiune_Terasa();
-        }
-
-    }
-
     int s;
-    std::cout<<"Afisati imobilele cu pretul mai mic de 60000 de Euro: \n";
+    std::cout<<"Afisati imobilele cu pretul intre 10000 si 60000 de Euro: \n";
     for(auto & i : locuinte){
-
-        try{
-            s = i->getPret();
-            if(s<60000){
-                i->afisare();
-            }
-            else {
-                throw std::exception();
-            }
-
+        s = i->getPret();
+        if(10000 < s && s < 60000){
+            std::cout << *i << '\n';
         }
-        catch(std::exception &s){
-            std::cout<<"Imobilul nu are pretul < 60000\n";
-        }
+
         std::cout<<"\n";
-
     }
 }
 
-Agentie &Agentie::operator=(Agentie agentia) {
-    // eliminam toate elementele din vector
-    locuinte.clear();
-    nrLocuinte=agentia.nrLocuinte;
-    for(int i=0;i<nrLocuinte;i++){
-        locuinte.push_back(agentia.locuinte[i]);
-    }
+Agentie &Agentie::operator=(Agentie other) {
+    swap(*this, other);
     return *this;
 }
 
-Agentie::Agentie() = default;
+Agentie::Agentie (const Agentie& other)
+{
+    for (auto& loc: other.locuinte)
+        locuinte.emplace_back(loc->clone());
+    numeAgentie=other.numeAgentie;
+}
+
+Agentie::Agentie(std::string nume) {
+    this->numeAgentie = nume;
+}
+
+void swap(Agentie &a1, Agentie &a2) {
+    std::swap(a1.locuinte, a2.locuinte);
+    std::swap(a1.numeAgentie, a2.numeAgentie);
+}
