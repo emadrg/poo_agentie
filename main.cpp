@@ -1,8 +1,8 @@
 #include "Agentie.h"
 
 
-int Agentie::pret_mp_oras = 1000;
-int Agentie::pret_mp_tara = 800;
+float Agentie::pret_mp_oras = 1000;
+float Agentie::pret_mp_tara = 800;
 float Agentie::valoare_distanta_mare = 0.8;
 float Agentie::valoare_distanta_medie = 1.05;
 float Agentie::valoare_distanta_mica = 1.3;

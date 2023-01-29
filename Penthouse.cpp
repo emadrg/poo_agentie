@@ -13,7 +13,7 @@ Penthouse::Penthouse() : Locuinta(0, 0), Apartament() {
     dimensiune_terasa = 0;
 }
 
-Penthouse::Penthouse(const std::string& z, int nr, int mp, int dim_t) : Locuinta(nr, mp),
+Penthouse::Penthouse(const std::string& z, int nr, float mp, float dim_t) : Locuinta(nr, mp),
                                                                  Apartament(z, nr, mp) {
     if (nr < 0 || mp < 0 || dim_t < 0)
         throw PenthouseException("Dimansiune negativa!");
@@ -22,7 +22,7 @@ Penthouse::Penthouse(const std::string& z, int nr, int mp, int dim_t) : Locuinta
 }
 
 //getPret
-int Penthouse::getPret()const{
+float Penthouse::getPret()const{
     return metri_patrati*Agentie::pret_mp_oras + dimensiune_terasa*Agentie::pret_mp_oras + taxa_inregistrare;
 }
 

@@ -15,8 +15,8 @@ class Agentie {
     std::vector<std::shared_ptr<Locuinta>> locuinte;
 
 public:
-    static int pret_mp_oras;
-    static int pret_mp_tara;
+    static float pret_mp_oras;
+    static float pret_mp_tara;
     static float valoare_distanta_mare;
     static float valoare_distanta_medie;
     static float valoare_distanta_mica;

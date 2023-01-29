@@ -10,7 +10,8 @@
 
 void Agentie::citire() {
     std::string loc,z;
-    int nr,mp,dim_g,dist_c,dim_t,nrLocuinte;
+    float mp;
+    int nr,dim_g,dist_c,dim_t,nrLocuinte;
     std::cout << "Introduceti numarul de imobiliare: ";
 
     std::cin >> nrLocuinte;
@@ -204,17 +205,17 @@ void Agentie::afisare() {
 
     std::cout<<"\n";
 
-    int pret_total = 0;
+    float pret_total = 0;
     std::cout<<"Pretul total al imobiliarelor este: ";
-    for(const auto & i : locuinte){
+    for(auto & i : locuinte){
         pret_total += i->getPret();
     }
     std::cout<<pret_total<<'\n';
 
-    //int s;
+    //float s;
     std::cout<<"Afisati imobilele cu pretul intre 10000 si 60000 de Euro: \n";
     for(const auto& i : locuinte){
-        //s = i->getPret();
+       // s = i->getPret();
         if(10000 < i->getPret() && i->getPret() < 60000){
             std::cout << *i << '\n';
         }

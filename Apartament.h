@@ -15,16 +15,16 @@ class Apartament: virtual public Locuinta{
 protected:
     std::string zona{};
 
-    const int taxa_inregistrare = 1000;
+    const float taxa_inregistrare = 1000;
 
 public:
     // constructor fara parametri
     Apartament();
 
     // constructor cu parametri
-    Apartament(const std::string&, int , int );
+    Apartament(const std::string&, int , float );
 
-    [[nodiscard]] int getPret() const override;
+    [[nodiscard]] float getPret() const override;
 
     std::string toString() override;
 

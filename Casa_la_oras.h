@@ -16,9 +16,9 @@ private:
 
 public:
     Casa_la_oras();
-    Casa_la_oras(const std::string&, int , int , int);
+    Casa_la_oras(const std::string&, int , float , int);
 
-    [[nodiscard]] int getPret()const override;
+    [[nodiscard]] float getPret() const override;
 
     std::string toString() override;
 

@@ -11,13 +11,16 @@
 
 class Casa_la_tara: public Casa{
 private:
+
+
     int dimensiune_gradina;
 
 public:
     Casa_la_tara();
-    Casa_la_tara(const std::string&, int , int , int);
+   // Casa_la_tara(const std::string&, int , float , int);
+   Casa_la_tara(const std::string &loc, int nr, float mp, int dim);
 
-    [[nodiscard]] int getPret()const override;
+    [[nodiscard]] float getPret() const override;
 
     std::string toString() override;
 

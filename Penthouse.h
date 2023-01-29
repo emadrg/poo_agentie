@@ -11,13 +11,15 @@
 
 class Penthouse: public Apartament{
 private:
-    int dimensiune_terasa;
+
+    float dimensiune_terasa;
 
 public:
     Penthouse();
-    Penthouse(const std::string&, int, int, int);
 
-    [[nodiscard]] int getPret() const override;
+    Penthouse(const std::string &z, int nr, float mp, float dim_t);
+
+    [[nodiscard]] float getPret() const override;
 
     std::string toString() override;
 

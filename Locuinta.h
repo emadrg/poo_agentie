@@ -11,13 +11,12 @@
 
 class Locuinta {
 protected:
-    int numar_camere;
-    int metri_patrati;
 
-    Locuinta(int nrc, int mp);
+    int numar_camere;
+    float metri_patrati;
 
 public:
-    [[nodiscard]] virtual int getPret()const = 0;
+    [[nodiscard]] virtual float getPret() const = 0;
     [[nodiscard]] virtual std::shared_ptr<Locuinta> clone() const = 0;
 
     virtual ~Locuinta() = 0;
@@ -25,6 +24,7 @@ public:
     virtual std::string toString() = 0;
 
     friend std::ostream& operator<<(std::ostream& os, Locuinta& locuinta);
+    Locuinta(int nrc, float mp);
 };
 
 
