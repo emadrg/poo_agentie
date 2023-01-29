@@ -22,13 +22,13 @@ public:
     Apartament();
 
     // constructor cu parametri
-    Apartament(std::string, int , int );
+    Apartament(const std::string&, int , int );
 
-    int getPret() const override;
+    [[nodiscard]] int getPret() const override;
 
     std::string toString() override;
 
-    std::shared_ptr<Locuinta> clone() const override {
+    [[nodiscard]] std::shared_ptr<Locuinta> clone() const override {
         return std::make_shared<Apartament>(*this);
     }
 };

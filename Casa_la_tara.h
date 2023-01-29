@@ -15,13 +15,13 @@ private:
 
 public:
     Casa_la_tara();
-    Casa_la_tara(std::string, int , int , int);
+    Casa_la_tara(const std::string&, int , int , int);
 
-    int getPret()const override;
+    [[nodiscard]] int getPret()const override;
 
     std::string toString() override;
 
-    std::shared_ptr<Locuinta> clone() const override {
+    [[nodiscard]] std::shared_ptr<Locuinta> clone() const override {
         return std::make_shared<Casa_la_tara>(*this);
     }
 };

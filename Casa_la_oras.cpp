@@ -11,7 +11,7 @@ Casa_la_oras::Casa_la_oras(): Casa(){
 }
 
 //constructor cu parametri
-Casa_la_oras::Casa_la_oras(std::string loc, int nr, int mp, int dist ): Casa(loc, nr, mp){
+Casa_la_oras::Casa_la_oras(const std::string& loc, int nr, int mp, int dist ): Casa(loc, nr, mp){
     if (distanta_centru < 0)
         throw CasaOrasException("Dimensiunea gradinii e negativa!");
 

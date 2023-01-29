@@ -15,31 +15,31 @@ class LocuintaException : public std::runtime_error {
 
 class ApartamentException : public LocuintaException {
 public :
-    explicit ApartamentException(std::string msg):
+    explicit ApartamentException(const std::string& msg):
             LocuintaException("Exceptie Apartament: " + msg) {}
 };
 
 class PenthouseException : public LocuintaException {
 public :
-    explicit PenthouseException(std::string msg):
+    explicit PenthouseException(const std::string& msg):
             LocuintaException("Exceptie Penthouse: " + msg) {}
 };
 
 class CasaException : public LocuintaException {
 public :
-    explicit CasaException(std::string msg):
+    explicit CasaException(const std::string& msg):
             LocuintaException(msg) {}
 };
 
 class CasaOrasException : public CasaException {
 public:
-    explicit CasaOrasException(std::string msg):
+    explicit CasaOrasException(const std::string& msg):
             CasaException("Exceptie Casa oras: " + msg) {}
 };
 
 class CasaTaraException : public CasaException {
 public:
-    explicit CasaTaraException(std::string msg):
+    explicit CasaTaraException(const std::string& msg):
             CasaException("Exceptie Casa tara: " + msg) {}
 };
 

@@ -21,7 +21,7 @@ public:
     static float valoare_distanta_medie;
     static float valoare_distanta_mica;
 
-    [[maybe_unused]] Agentie(std::string nume);
+    [[maybe_unused]] explicit Agentie(std::string nume);
 
     void citire();
     void afisare();
