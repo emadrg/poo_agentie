@@ -6,6 +6,7 @@
 #include "Penthouse.h"
 #include "Exceptii.h"
 #include <iostream>
+#include <utility>
 
 void Agentie::citire() {
     std::string loc,z;
@@ -197,7 +198,7 @@ void Agentie::citire() {
 void Agentie::afisare() {
     std::cout << "Agentia are locuintele:\n";
 
-    for(auto i : locuinte){
+    for(const auto& i : locuinte){
         std::cout << *i << '\n';
     }
 
@@ -210,11 +211,11 @@ void Agentie::afisare() {
     }
     std::cout<<pret_total<<'\n';
 
-    int s;
+    //int s;
     std::cout<<"Afisati imobilele cu pretul intre 10000 si 60000 de Euro: \n";
-    for(auto i : locuinte){
-        s = i->getPret();
-        if(10000 < s && s < 60000){
+    for(const auto& i : locuinte){
+        //s = i->getPret();
+        if(10000 < i->getPret() && i->getPret() < 60000){
             std::cout << *i << '\n';
         }
 
@@ -227,15 +228,15 @@ Agentie &Agentie::operator=(Agentie other) {
     return *this;
 }
 
-Agentie::Agentie (const Agentie& other)
+[[maybe_unused]] Agentie::Agentie (const Agentie& other)
 {
-    for (auto loc: other.locuinte)
+    for (const auto& loc: other.locuinte)
         locuinte.emplace_back(loc->clone());
     numeAgentie=other.numeAgentie;
 }
 
-Agentie::Agentie(std::string nume) {
-    this->numeAgentie = nume;
+[[maybe_unused]] Agentie::Agentie(std::string nume) {
+    this->numeAgentie = std::move(nume);
 }
 
 void swap(Agentie &a1, Agentie &a2) {

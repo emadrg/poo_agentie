@@ -21,14 +21,14 @@ public:
     static float valoare_distanta_medie;
     static float valoare_distanta_mica;
 
-    Agentie(std::string nume);
+    [[maybe_unused]] Agentie(std::string nume);
 
     void citire();
     void afisare();
 
     Agentie &operator=(Agentie agentia);
 
-    Agentie (const Agentie& other);
+    [[maybe_unused]] Agentie (const Agentie& other);
 
     friend void swap(Agentie& a1, Agentie& a2);
 };
