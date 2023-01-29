@@ -206,7 +206,7 @@ void Agentie::afisare() {
 
     int pret_total = 0;
     std::cout<<"Pretul total al imobiliarelor este: ";
-    for(auto & i : locuinte){
+    for(const auto & i : locuinte){
         pret_total += i->getPret();
     }
     std::cout<<pret_total<<'\n';
