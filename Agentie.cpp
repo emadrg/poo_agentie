@@ -197,7 +197,7 @@ void Agentie::citire() {
 void Agentie::afisare() {
     std::cout << "Agentia are locuintele:\n";
 
-    for(auto &i : locuinte){
+    for(auto i : locuinte){
         std::cout << *i << '\n';
     }
 
@@ -212,7 +212,7 @@ void Agentie::afisare() {
 
     int s;
     std::cout<<"Afisati imobilele cu pretul intre 10000 si 60000 de Euro: \n";
-    for(auto & i : locuinte){
+    for(auto i : locuinte){
         s = i->getPret();
         if(10000 < s && s < 60000){
             std::cout << *i << '\n';
@@ -229,7 +229,7 @@ Agentie &Agentie::operator=(Agentie other) {
 
 Agentie::Agentie (const Agentie& other)
 {
-    for (auto& loc: other.locuinte)
+    for (auto loc: other.locuinte)
         locuinte.emplace_back(loc->clone());
     numeAgentie=other.numeAgentie;
 }
