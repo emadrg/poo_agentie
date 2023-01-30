@@ -15,7 +15,7 @@ private:
 public:
     MyList() = default;
 
-    int size() const {
+    [[nodiscard]] int size() const {
         return v.size();
     }
 
