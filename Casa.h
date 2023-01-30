@@ -14,7 +14,7 @@ public:
     Casa();
 
     // constructor cu parametri
-    Casa(const std::string&, int , float );
+    Casa(const std::string&, int , int );
 
     std::string toString() override;
 };

@@ -11,7 +11,7 @@ Casa_la_oras::Casa_la_oras(): Casa(){
 }
 
 //constructor cu parametri
-Casa_la_oras::Casa_la_oras(const std::string& loc, int nr, float mp, int dist ): Casa(loc, nr, mp){
+Casa_la_oras::Casa_la_oras(std::string loc, int nr, int mp, int dist ): Casa(loc, nr, mp){
     if (distanta_centru < 0)
         throw CasaOrasException("Dimensiunea gradinii e negativa!");
 
@@ -19,8 +19,8 @@ Casa_la_oras::Casa_la_oras(const std::string& loc, int nr, float mp, int dist ):
 }
 
 //getPret
-float Casa_la_oras::getPret() const {
-    float pret_baza = metri_patrati*Agentie::pret_mp_oras;
+int Casa_la_oras::getPret()const{
+    int pret_baza = metri_patrati*Agentie::pret_mp_oras;
     if (distanta_centru < 10)
         pret_baza *= Agentie::valoare_distanta_mica;
     else if (distanta_centru < 100)

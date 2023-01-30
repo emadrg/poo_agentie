@@ -6,7 +6,7 @@
 
 Locuinta::~Locuinta()= default;
 
-Locuinta::Locuinta(int nrc, float mp) {
+Locuinta::Locuinta(int nrc, int mp) {
     this->numar_camere = nrc;
     this->metri_patrati = mp;
 }

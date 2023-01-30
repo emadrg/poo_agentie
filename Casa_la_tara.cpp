@@ -2,6 +2,7 @@
 // Created by drgem on 02/01/2023.
 //
 
+#include <utility>
 #include"Casa_la_tara.h"
 #include "Casa.h"
 #include "Agentie.h"
@@ -13,7 +14,7 @@ Casa_la_tara::Casa_la_tara(): Casa(){
 }
 
 //constructor cu parametri
-Casa_la_tara::Casa_la_tara(const std::string& loc, int nr, float mp, int dim ): Casa(loc, nr, mp){
+Casa_la_tara::Casa_la_tara(std::string loc, int nr, int mp, int dim ): Casa(std::move(loc), nr, mp){
     if (dim < 0)
         throw CasaTaraException("Dimensiunea gradinii e negativa!");
 
@@ -21,8 +22,8 @@ Casa_la_tara::Casa_la_tara(const std::string& loc, int nr, float mp, int dim ): 
 }
 
 //getPret
-float Casa_la_tara::getPret()const {
-    float pret_baza = metri_patrati * Agentie::pret_mp_tara;
+int Casa_la_tara::getPret()const {
+    int pret_baza = metri_patrati * Agentie::pret_mp_tara;
     return pret_baza + pret_baza*taxa_teren;
 }
 

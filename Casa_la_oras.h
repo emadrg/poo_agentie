@@ -5,7 +5,6 @@
 #ifndef POO_AGENTIE_CASA_LA_ORAS_H
 #define POO_AGENTIE_CASA_LA_ORAS_H
 
-#include <memory>
 #include"Casa.h"
 #pragma once
 
@@ -16,13 +15,13 @@ private:
 
 public:
     Casa_la_oras();
-    Casa_la_oras(const std::string&, int , float , int);
+    Casa_la_oras(std::string, int , int , int);
 
-    [[nodiscard]] float getPret() const override;
+    int getPret()const override;
 
     std::string toString() override;
 
-    [[nodiscard]] std::shared_ptr<Locuinta> clone() const override {
+    std::shared_ptr<Locuinta> clone() const override {
         return std::make_shared<Casa_la_oras>(*this);
     }
 };

@@ -1,7 +1,3 @@
-//
-// Created by drgem on 28/01/2023.
-//
-
 #ifndef OOP_EXCEPTII_H
 #define OOP_EXCEPTII_H
 
@@ -15,31 +11,31 @@ class LocuintaException : public std::runtime_error {
 
 class ApartamentException : public LocuintaException {
 public :
-    explicit ApartamentException(const std::string& msg):
+    explicit ApartamentException(std::string msg):
             LocuintaException("Exceptie Apartament: " + msg) {}
 };
 
 class PenthouseException : public LocuintaException {
 public :
-    explicit PenthouseException(const std::string& msg):
+    explicit PenthouseException(std::string msg):
             LocuintaException("Exceptie Penthouse: " + msg) {}
 };
 
 class CasaException : public LocuintaException {
 public :
-    explicit CasaException(const std::string& msg):
+    explicit CasaException(std::string msg):
             LocuintaException(msg) {}
 };
 
 class CasaOrasException : public CasaException {
 public:
-    explicit CasaOrasException(const std::string& msg):
+    explicit CasaOrasException(std::string msg):
             CasaException("Exceptie Casa oras: " + msg) {}
 };
 
 class CasaTaraException : public CasaException {
 public:
-    explicit CasaTaraException(const std::string& msg):
+    explicit CasaTaraException(std::string msg):
             CasaException("Exceptie Casa tara: " + msg) {}
 };
 

@@ -14,7 +14,7 @@ Casa::Casa() : Locuinta(0, 0){
 }
 
 //constructor cu parametri
-Casa::Casa(const std::string& loc, int nr, float mp) : Locuinta(nr, mp) {
+Casa::Casa(const std::string& loc, int nr, int mp) : Locuinta(nr, mp) {
 
     if (nr < 0)
         throw CasaException("Numar de camere negativ!");

@@ -11,19 +11,17 @@
 
 class Penthouse: public Apartament{
 private:
-
-    float dimensiune_terasa;
+    int dimensiune_terasa;
 
 public:
     Penthouse();
+    Penthouse(std::string, int, int, int);
 
-    Penthouse(const std::string &z, int nr, float mp, float dim_t);
-
-    [[nodiscard]] float getPret() const override;
+    int getPret() const override;
 
     std::string toString() override;
 
-    [[nodiscard]] std::shared_ptr<Locuinta> clone() const override {
+    std::shared_ptr<Locuinta> clone() const override {
         return std::make_shared<Penthouse>(*this);
     }
 };

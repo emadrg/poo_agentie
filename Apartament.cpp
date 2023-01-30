@@ -11,7 +11,7 @@ Apartament::Apartament() : Locuinta(0, 0){
 }
 
 //constructor cu parametri
-Apartament::Apartament(const std::string& _zona, int nr, float mp) : Locuinta(nr, mp) {
+Apartament::Apartament(std::string _zona, int nr, int mp) : Locuinta(nr, mp) {
     if (nr < 0 || mp < 0)
         throw ApartamentException("Numar de mp sau camere invalid!");
 
@@ -21,7 +21,7 @@ Apartament::Apartament(const std::string& _zona, int nr, float mp) : Locuinta(nr
 }
 
 //getPret
-float Apartament::getPret()const{
+int Apartament::getPret()const{
     return metri_patrati*Agentie::pret_mp_oras + taxa_inregistrare;
 }
 
