@@ -5,6 +5,8 @@
 #ifndef POO_AGENTIE_CASA_LA_TARA_H
 #define POO_AGENTIE_CASA_LA_TARA_H
 
+#include <utility>
+
 #include"Casa.h"
 #include "Exceptii.h"
 
@@ -18,13 +20,13 @@ private:
 
 public:
     Casa_la_tara();
-    Casa_la_tara(std::string, int , int , int);
+    Casa_la_tara(const std::string&, int , int , int);
 
-    int getPret() const override;
+    [[nodiscard]] int getPret() const override;
 
     std::string toString() override;
 
-    std::shared_ptr<Locuinta> clone() const override {
+    [[nodiscard]] std::shared_ptr<Locuinta> clone() const override {
         return std::make_shared<Casa_la_tara>(*this);
     }
 };
@@ -37,7 +39,7 @@ public:
     Casa_la_tara_builder() = default;
 
     Casa_la_tara_builder& localitate(std::string loc) {
-        casaLaTara.localitate = loc;
+        casaLaTara.localitate = std::move(loc);
         return *this;
     }
 
@@ -57,7 +59,7 @@ public:
     }
 
     Casa_la_tara build() {
-        if (casaLaTara.localitate == "" || casaLaTara.dimensiune_gradina < 0 || casaLaTara.metri_patrati <= 0 || casaLaTara.numar_camere <= 0)
+        if (casaLaTara.localitate.empty() || casaLaTara.dimensiune_gradina < 0 || casaLaTara.metri_patrati <= 0 || casaLaTara.numar_camere <= 0)
             throw CasaTaraException("Valoare invalida!");
         return casaLaTara;
     }

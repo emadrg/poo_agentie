@@ -17,8 +17,8 @@ protected:
     Locuinta(int nrc, int mp);
 
 public:
-    virtual int getPret()const = 0;
-    virtual std::shared_ptr<Locuinta> clone() const = 0;
+    [[nodiscard]] virtual int getPret()const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Locuinta> clone() const = 0;
 
     virtual ~Locuinta() = 0;
 

@@ -23,11 +23,11 @@ public:
     // constructor cu parametri
     Apartament(std::string, int , int );
 
-    int getPret() const override;
+    [[nodiscard]] int getPret() const override;
 
     std::string toString() override;
 
-    std::shared_ptr<Locuinta> clone() const override {
+    [[nodiscard]] std::shared_ptr<Locuinta> clone() const override {
         return std::make_shared<Apartament>(*this);
     }
 };
@@ -35,15 +35,15 @@ public:
 class FactoryApartament {
 public:
     static Apartament apartamentMare() {
-        return Apartament("Pantelimon", 4, 110);
+        return {"Pantelimon", 4, 110};
     };
 
     static Apartament apartamentMic() {
-        return Apartament("Militari", 2, 40);
+        return {"Militari", 2, 40};
     }
 
     static Apartament apartamentModern() {
-        return Apartament("Primaverii", 3, 85);
+        return {"Primaverii", 3, 85};
     }
 };
 

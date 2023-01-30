@@ -6,6 +6,7 @@
 #include "Penthouse.h"
 #include "Exceptii.h"
 #include <iostream>
+#include <utility>
 
 void Agentie::citire() {
     std::string loc,z;
@@ -238,11 +239,11 @@ void Agentie::afisare() {
     }
     std::cout<<pret_total<<'\n';
 
-    int s;
+    //int s;
     std::cout<<"Afisati imobilele cu pretul intre 10000 si 60000 de Euro: \n";
     for (int i = 0; i < locuinte.size(); ++i) {
-        s = locuinte.get(i)->getPret();
-        if(10000 < s && s < 60000){
+        //s = locuinte.get(i)->getPret();
+        if(10000 < locuinte.get(i)->getPret() && locuinte.get(i)->getPret() < 60000){
             std::cout << *locuinte.get(i) << '\n';
         }
 
@@ -255,15 +256,15 @@ Agentie &Agentie::operator=(Agentie other) {
     return *this;
 }
 
-Agentie::Agentie (const Agentie& other)
+[[maybe_unused]] Agentie::Agentie (const Agentie& other)
 {
     for (int i = 0; i < other.locuinte.size(); ++i)
         locuinte.emplace_back(other.locuinte.get(i)->clone());
     numeAgentie=other.numeAgentie;
 }
 
-Agentie::Agentie(std::string nume) {
-    this->numeAgentie = nume;
+[[maybe_unused]] Agentie::Agentie(std::string nume) {
+    this->numeAgentie = std::move(nume);
 }
 
 void swap(Agentie &a1, Agentie &a2) {
