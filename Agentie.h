@@ -18,9 +18,9 @@ class Agentie {
 public:
     static int pret_mp_oras;
     static int pret_mp_tara;
-    static float valoare_distanta_mare;
-    static float valoare_distanta_medie;
-    static float valoare_distanta_mica;
+    static double valoare_distanta_mare;
+    static double valoare_distanta_medie;
+    static double valoare_distanta_mica;
 
     [[maybe_unused]] explicit Agentie(std::string nume);
 
